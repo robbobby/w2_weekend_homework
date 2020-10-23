@@ -1,0 +1,2 @@
+class Bath:
+    pass

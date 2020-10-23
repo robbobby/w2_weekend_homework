@@ -1,0 +1,2 @@
+class DukeBox:
+    pass
