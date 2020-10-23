@@ -1,5 +1,5 @@
 import unittest
-from src.Room. src import *
+from src.Room.bath import *
 
 
 class TestBath(unittest.TestCase):
