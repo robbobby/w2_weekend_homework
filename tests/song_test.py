@@ -20,7 +20,7 @@ class TestSong(unittest.TestCase):
         self.assertEqual(Genre.ALTERNATIVE_METAL, self.song.genre)
 
     def test_song_play(self):
-        self.assertEqual("Cafo by Animals as Leaders playing...", self.song.play_song())
+        self.assertEqual("Cafo by Animals as Leaders playing...", self.song.play())
 
     def test_song_paused(self):
-        self.assertEqual("Cafo by Animals as Leaders paused", self.song.pause_song())
+        self.assertEqual("Cafo by Animals as Leaders paused", self.song.pause())

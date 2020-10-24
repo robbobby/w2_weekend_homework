@@ -22,3 +22,36 @@ class TestFood(unittest.TestCase):
 
     def test_food_has__ability_required(self):
         self.assertEqual(FoodAbility.INDIAN, self.food_1.ABILITY_REQUIRED)
+
+    def test_food_has_stock(self):
+        self.assertEqual(0, self.food.stock)
+
+    def test_add_to_stock_default_value(self):
+        self.food.add_stock()
+        self.assertEqual(1, self.food.stock)
+
+    def test_add_to_stock(self):
+        self.food.add_stock(1)
+        self.assertEqual(1, self.food.stock)
+
+    def test__add_to_stock(self):
+        self.food.add_stock(10)
+        self.food.add_stock(10)
+        self.assertEqual(20, self.food.stock)
+
+    def test_check_has_stock(self):
+        self.assertEqual(False, self.food.has_stock())
+
+    def test__check_has_stock(self):
+        self.food.add_stock(2)
+        self.assertEqual(True, self.food.has_stock(2))
+
+    def test_reduce_stock(self):
+        self.food.add_stock(10)
+        self.food.serve(11)
+        self.assertEqual(10, self.food.stock)
+
+    def test__reduce_stock(self):
+        self.food.add_stock(10)
+        self.food.serve(9)
+        self.assertEqual(1, self.food.stock)

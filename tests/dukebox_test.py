@@ -8,7 +8,7 @@ class TestDukeBox(unittest.TestCase):
         self.song = [Song("Cafo", "Animals as Leaders", 2009, Genre.ALTERNATIVE_METAL),
                     Song("Electric Sunrise", "Plini", 2016, Genre.PROG_METAL),
                     Song("Pastures", "Plini", 2016, Genre.PROG_METAL)]
-        self.dukebox = DukeBox(self.song, 99, None)
+        self.dukebox = DukeBox(self.song, 99, [])
 
     def test_dukebox_has_song(self):
         self.assertEqual("Cafo", self.dukebox.songs[0].name)  ### works fine

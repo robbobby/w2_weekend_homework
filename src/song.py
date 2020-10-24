@@ -8,10 +8,10 @@ class Song:
         self.band = band
 
 
-    def play_song(self):
+    def play(self):
         return f"{self.name} by {self.band} playing..."
 
-    def pause_song(self):
+    def pause(self):
         return f"{self.name} by {self.band} paused"
 
     def get_name(self):
