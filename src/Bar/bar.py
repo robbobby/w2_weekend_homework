@@ -5,23 +5,36 @@ class Bar:
         self.staff_list = staff
         self.dukebox = dukebox
 
-    def is_in_drinks_list(self, new_drink):
-        for drink in self.drinks_list:
+    def is_in_menu_list(self, new_drink, menu):
+        for drink in menu:
             if drink.name == new_drink.name:
                 return drink
 
         return False
 
-    def add_to_drinks_list(self, new_drink):
-        if self.is_in_drinks_list(new_drink):
-            for drink in self.drinks_list:
-                if drink.name == new_drink.name:
+    def add_to_menu_list(self, new_item, menu):
+        if self.is_in_menu_list(new_item, menu):
+            for drink in menu:
+                if drink.name == new_item.name:
                     drink.add_stock()
         else:
-            self.drinks_list.append(new_drink)
-            self.drinks_list[-1].add_stock()
+            menu.append(new_item)
+            menu[-1].add_stock()
 
-    def remove_from_drinks_list(self, drink_name):
-        for drink in self.drinks_list:
-            if drink.name == drink_name:
-                self.drinks_list.remove(drink)
+    def remove_from_menu_list(self, new_item, menu):
+        for item in menu:
+            if item.name == new_item:
+                menu.remove(item)
+
+    def remove_staff_member(self, staff_name):
+        for staff in self.staff_list:
+            if staff.name == staff_name:
+                self.staff_list.remove(staff)
+
+    def add_staff_member(self, staff):
+        self.staff_list.append(staff)
+
+    def get_staff_member_by_name(self, staff_name):
+        for staff in self.staff_list:
+            if staff.name == staff_name:
+                return staff

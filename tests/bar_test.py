@@ -25,6 +25,7 @@ class TestBar(unittest.TestCase):
                                     ##### Food #####
         self.food = Food("Soup", 399, 2, None)
         self.food_1 = Food("Curry", 399, 2, FoodAbility.INDIAN)
+        self.food_not = Food("Chinese", 899, 2, FoodAbility.CHINESE)
 
                                     ##### Songs #####
 
@@ -43,6 +44,8 @@ class TestBar(unittest.TestCase):
         self.bar.food_list[0].add_stock(100)
         self.bar.food_list[1].add_stock(70)
 
+
+                                    ##### Object/Properties test #####
     def test_bar_has_dukebox(self):
         self.assertEqual("Cafo by Animals as Leaders playing...", self.dukebox.songs[0].play())
 
@@ -52,29 +55,63 @@ class TestBar(unittest.TestCase):
     def test_bar_has_staff__member(self):
         self.assertEqual("Bob", self.bar.staff_list[0].name)
 
-    def test_bhar_has_drinks(self):
+    def test_bar_has_food(self):
         self.assertEqual(FoodAbility.INDIAN, self.bar.food_list[1].ABILITY_REQUIRED)
 
-    def test_bar_has_drink(self):
-        self.assertEqual("Cola", self.bar.drinks_list[0].name)
+                                    ##### Drinks Tests #####
 
     def test_bar_has__drink(self):
+        self.assertEqual("Cola", self.bar.drinks_list[0].name)
+
+    def test_bar_has___drink(self):
         self.assertEqual("Wine", self.bar.drinks_list[1].name)
 
     def test_is_in__drinks_list(self):
-        self.assertEqual(self.cola, self.bar.is_in_drinks_list(self.cola))
+        self.assertEqual(self.cola, self.bar.is_in_menu_list(self.cola, self.bar.drinks_list))
 
     def test_is_in_drinks_list(self):
-        self.assertEqual(False, self.bar.is_in_drinks_list(self.vodka))
+        self.assertEqual(False, self.bar.is_in_menu_list(self.vodka, self.bar.drinks_list))
 
     def test_add_to_drinks(self):
-        self.bar.add_to_drinks_list(self.vodka)
+        self.bar.add_to_menu_list(self.vodka, self.bar.drinks_list)
         self.assertEqual(1, self.bar.drinks_list[-1].stock)
 
     def test_add_to__drinks(self):
-        self.bar.add_to_drinks_list(self.cola)
+        self.bar.add_to_menu_list(self.cola, self.bar.drinks_list)
         self.assertEqual(61, self.bar.drinks_list[0].stock)
 
     def test_remove_drink_from_list(self):
-        self.bar.remove_from_drinks_list("Cola")
+        self.bar.remove_from_menu_list("Cola", self.bar.drinks_list)
         self.assertEqual(1, len(self.bar.drinks_list))
+
+                                ##### Food List Tests #####
+    def test_is_in_food_list(self):
+        self.assertEqual(self.food, self.bar.is_in_menu_list(self.food, self.bar.food_list))
+
+    def test_is_in_food__list(self):
+        self.assertEqual(False, self.bar.is_in_menu_list(self.food_not, self.bar.food_list))
+
+    def test_add_food_to_list(self):
+        self.bar.add_to_menu_list(self.food_not, self.bar.food_list)
+        self.assertEqual(1, self.bar.food_list[-1].stock)
+        self.assertEqual(self.food_not.name, self.bar.food_list[-1].name)
+
+    def test_add_food_to__list(self):
+        self.bar.add_to_menu_list(self.food, self.bar.food_list)
+        self.assertEqual(101, self.bar.food_list[0].stock)
+
+    def test_remove_food_from_list(self):
+        self.bar.remove_from_menu_list("Curry", self.bar.food_list)
+        self.assertEqual(1, len(self.bar.food_list))
+
+                                ##### Staff Tests #####
+    def test_remove_new_staff(self):
+        self.bar.remove_staff_member(self.staff1.name)
+        self.assertEqual(2, len(self.bar.staff_list))
+
+    def test_add_new__staff(self):
+        self.bar.add_staff_member(self.staff1)
+        self.assertEqual(4, len(self.bar.staff_list))
+
+    def test_get_staff_member_by_name(self):
+        self.assertEqual(self.bar.staff_list[0], self.bar.get_staff_member_by_name(self.bar.staff_list[0].name))
