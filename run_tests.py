@@ -20,7 +20,6 @@ from tests.staff_test import *
 from tests.toilet_test import *
 from tests.tv_test import *
 
-from tests.balcony_test import *
 
 if __name__ == "__main__":
     unittest.main()

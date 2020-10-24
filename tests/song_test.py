@@ -1,10 +1,11 @@
 import unittest
 from src.song import Song
+from src.genre import Genre
 
 
 class TestSong(unittest.TestCase):
     def setUp(self):
-        self.song = Song("Cafo", "Animals as Leaders", 2009, "Altnerative Metal")
+        self.song = Song("Cafo", "Animals as Leaders", 2009, Genre.ALTERNATIVE_METAL)
 
     def test_song_has_name(self):
         self.assertEqual("Cafo", self.song.name)
@@ -16,7 +17,7 @@ class TestSong(unittest.TestCase):
         self.assertEqual(2009, self.song.year)
 
     def test_song_has_genre(self):
-        self.assertEqual("Altnerative Metal", self.song.genre)
+        self.assertEqual(Genre.ALTERNATIVE_METAL, self.song.genre)
 
     def test_song_play(self):
         self.assertEqual("Cafo by Animals as Leaders playing...", self.song.play_song())
