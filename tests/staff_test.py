@@ -48,10 +48,40 @@ class TestStaff(unittest.TestCase):
         self.staff_member2.increase_skill(2)
         self.assertEqual(6, self.staff_member2.skill)
 
-    def test_increase_skill(self):
+    def test_decrease_skill(self):
         self.staff_member2.decrease_skill(2)
         self.assertEqual(2, self.staff_member2.skill)
 
-    def test_increase_skill(self):
+    def test_decrease__skill(self):
         self.staff_member2.decrease_skill(20)
         self.assertEqual(0, self.staff_member2.skill)
+
+    def test_check_person_job(self):
+        self.staff_member3.change_job(Job.MUSCIAN)
+        self.assertEqual(Job.MUSCIAN, self.staff_member3.job)
+
+    def test_add_food_ability(self):
+        self.staff_member3.add_ability(FoodAbility.INDIAN)
+        # print(self.staff_member3.food_ability)
+        self.assertEqual(FoodAbility.INDIAN, self.staff_member3.food_ability[-1])
+
+    def test_add_food__ability(self):
+        self.staff_member.add_ability(FoodAbility.INDIAN)
+        # print(self.staff_member.food_ability)
+        self.assertEqual(FoodAbility.INDIAN, self.staff_member.food_ability[-1])
+
+    def test_add_food___ability(self):
+        self.staff_member2.add_ability(FoodAbility.INDIAN)
+        # print(self.staff_member2.food_ability)
+        self.assertEqual(FoodAbility.INDIAN, self.staff_member2.food_ability[-1])
+
+    def test_check_for_food_ability(self):
+        self.assertEqual(True, self.staff_member2.has_food_ability(FoodAbility.INDIAN))
+
+    def test_check_for_food__ability(self):
+        self.assertEqual(False, self.staff_member2.has_food_ability(FoodAbility.CHINESE))
+
+    def test_remove_food_ability(self):
+        self.staff_member3.remove_food_ability(FoodAbility.NONE)
+        # print(self.staff_member3.food_ability)
+        self.assertEqual([], self.staff_member3.food_ability)

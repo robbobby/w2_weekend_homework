@@ -1,3 +1,5 @@
+from src.food_ability import FoodAbility
+
 class Staff:
     def __init__(self, name, tiredness, age, skill, job, food_ability):
         self.job = job
@@ -18,3 +20,23 @@ class Staff:
             self.skill -= decrease_by
         else:
             self.skill = 0
+
+    def change_job(self, job):
+        self.job = job
+
+    def has_food_ability(self, food):
+        for ability in self.food_ability:
+            if ability == food:
+                return True
+
+        return False
+
+    def remove_food_ability(self, food):
+        for ability in self.food_ability:
+            if ability == food:
+                self.food_ability.remove(ability)
+
+    def add_ability(self, food):
+        if not self.has_food_ability(food):
+            self.remove_food_ability(FoodAbility.NONE)
+            self.food_ability.append(food)
