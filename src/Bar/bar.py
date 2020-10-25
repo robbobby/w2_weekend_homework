@@ -38,3 +38,4 @@ class Bar:
         for staff in self.staff_list:
             if staff.name == staff_name:
                 return staff
+

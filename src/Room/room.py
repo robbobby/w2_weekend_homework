@@ -1,12 +1,16 @@
+from src.Room.room_types import RoomType
+
+
 class Room:
     def __init__(self, rooms, dukebox, room_quality):
         self.dukebox = dukebox
         self.rooms = rooms
         self.room_quality = room_quality
         self.atmosphere = 0
-        self.set_atmosphere()
         self.guests = []
         self.guest_limit = 0
+
+        self.set_atmosphere()
 
     def add_room(self, room):
         self.rooms.append(room)
@@ -29,3 +33,9 @@ class Room:
         if len(self.guests) > 0:
             for guest in self.guests:
                 self.guests.remove(guest)
+
+    def is_big_enough(self, customer):
+        if customer.partner != None and self.room_quality != RoomType.SINGLE:
+            return True
+        else:
+            return False

@@ -115,3 +115,4 @@ class TestBar(unittest.TestCase):
 
     def test_get_staff_member_by_name(self):
         self.assertEqual(self.bar.staff_list[0], self.bar.get_staff_member_by_name(self.bar.staff_list[0].name))
+

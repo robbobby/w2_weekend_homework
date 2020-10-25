@@ -77,3 +77,8 @@ class TestRoom(unittest.TestCase):
         self.room.remove_guest()
         self.assertEqual(0, len(self.room.guests))
 
+    def test_room_can_take_all(self):
+        self.assertEqual(True, self.room.is_big_enough(self.customer))
+
+    def test_room_can_take__all(self):
+        self.assertEqual(False, self.room.is_big_enough(self.customer3))
