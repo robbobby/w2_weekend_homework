@@ -12,10 +12,10 @@ class TestToilet(unittest.TestCase):
     def test_toilet_has_comfort(self):
         self.assertEqual(7, self.toilet.comfort)
 
-    def test_toilet_has_model(self):
+    def test_toilet_has_hygiene(self):
         self.assertEqual(100, self.toilet.hygiene)
 
-    def test_toilet_has_model(self):
+    def test_toilet_has_atmosphere(self):
         self.assertEqual(10, self.toilet.atmosphere_level)
 
     def test_use_toilet_num1(self):

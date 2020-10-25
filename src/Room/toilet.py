@@ -7,9 +7,11 @@ class Toilet(BathroomUtility):
             self.hygiene = 0
         else:
             self.hygiene -= 3
+        self.set_atmosphere()
 
     def take_number2(self):
         if self.hygiene - 10 < 0:
             self.hygiene = 0
         else:
             self.hygiene -= 10
+        self.set_atmosphere()
