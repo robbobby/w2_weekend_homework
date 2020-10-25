@@ -5,6 +5,8 @@ class Room:
         self.room_quality = room_quality
         self.atmosphere = 0
         self.set_atmosphere()
+        self.guests = []
+        self.guest_limit = 0
 
     def add_room(self, room):
         self.rooms.append(room)
@@ -16,3 +18,9 @@ class Room:
             for room in self.rooms:
                 self.atmosphere += room.atmosphere
             self.atmosphere / len(self.rooms)
+
+    def add_guest(self, customer):
+        for guest in self.guests:
+            if guest == customer:
+                self.guests.remove(guest)
+        self.guests.append(customer)

@@ -68,8 +68,19 @@ class Customer:
     def take_money(self, amount):
         if self.has_money(amount):
             self.wallet -= amount
+            return True
+        else:
+            return False
 
     def borrow_money(self, amount):
         if self.partner != None and self.partner.has_money(amount):
             self.add_money(amount)
             self.partner.take_money(amount)
+            return True
+        else:
+            return False
+
+    def set_rooms_guest(self):
+        self.room.add_guest(self)
+        if self.partner != None:
+            self.room.add_guest(self.partner)

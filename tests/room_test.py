@@ -6,6 +6,7 @@ from src.Room.room import *
 from src.Room.room_types import RoomType
 from src.Room.sink import Sink
 from src.Room.toilet import Toilet
+from src.customer import Customer
 from src.dukebox import DukeBox
 from src.genre import Genre
 from src.song import Song
@@ -13,6 +14,14 @@ from src.song import Song
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
+
+                                ##### Customer Set Up #####
+        self.customer = Customer("Jeff", 24, 80, 70, 60, 10, 0, 90, None, 100)
+        self.customer2 = Customer("Margaret", 15, 83, 70, 99, 10, 0, 90, self.customer, 200)
+        self.customer3 = Customer("Dorothy", 47, 83, 70, 99, 10, 0, 90, None, 200)
+        self.customer4 = Customer("Humphrey", 15, 83, 70, 14, 10, 0, 90, None, 200)
+
+                                ##### Room Set Up #####
         self.bath = Bath("Bath Extra", 7, 100, 10)
         self.toilet = Toilet("ToLet Amaze", 7, 100, 10)
         self.sink = Sink("sink Extra", 7, 100, 10)
@@ -46,8 +55,19 @@ class TestRoom(unittest.TestCase):
         self.room.set_atmosphere()
         self.assertEqual(0, self.room.atmosphere)
 
-
     def test_room__atmosphere(self):
         self.room.add_room(self.bathroom)
         self.room.set_atmosphere()
         self.assertEqual(22, self.room.atmosphere)
+
+    def test_room_has_guest_list(self):
+        self.assertEqual([], self.room.guests)
+
+    def test_room_can_add_guest(self):
+        self.room.add_guest(self.customer)
+        self.assertEqual(self.customer, self.room.guests[0])
+
+    def test_room_can_add_guest(self):
+        self.room.add_guest(self.customer)
+        self.room.add_guest(self.customer)
+        self.assertEqual(1, len(self.room.guests))

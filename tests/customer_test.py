@@ -140,3 +140,9 @@ class TestCustomer(unittest.TestCase):
     def test_borrow__money(self):
         self.customer3.borrow_money(20)
         self.assertEqual(200, self.customer3.wallet)
+
+    def test_room_has_guests(self):
+        self.customer.set_room(self.room)
+        self.customer.set_rooms_guest()
+        self.assertEqual(2, len(self.customer.room.guests))
+
