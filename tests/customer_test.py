@@ -146,3 +146,8 @@ class TestCustomer(unittest.TestCase):
         self.customer.set_rooms_guest()
         self.assertEqual(2, len(self.customer.room.guests))
 
+    def test_remove_room_guest(self):
+        self.customer.set_room(self.room)
+        self.customer.set_rooms_guest()
+        self.customer.remove_room_guest()
+        self.assertEqual(0, len(self.room.guests))

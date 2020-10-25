@@ -24,3 +24,8 @@ class Room:
             if guest == customer:
                 self.guests.remove(guest)
         self.guests.append(customer)
+
+    def remove_guest(self):
+        if len(self.guests) > 0:
+            for guest in self.guests:
+                self.guests.remove(guest)

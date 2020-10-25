@@ -39,6 +39,12 @@ class Customer:
     def remove_self_from_partner(self):
         self.partner.partner = None
 
+    def __set_partners_room(self, room):
+        self.partner.room = room
+
+    def __remove_partners_room(self):
+        self.partner.room = None
+
     def remove_room(self):
         self.room = None
         self.__remove_partners_room()
@@ -46,15 +52,9 @@ class Customer:
     def remove_partner(self):
         self.partner = None
 
-    def __set_partners_room(self, room):
-        self.partner.room = room
-
     def set_room(self, room):
         self.room = room
         self.__set_partners_room(room)
-
-    def __remove_partners_room(self):
-        self.partner.room = None
 
     def has_money(self, amount):
         if self.wallet >= amount:
@@ -84,3 +84,8 @@ class Customer:
         self.room.add_guest(self)
         if self.partner != None:
             self.room.add_guest(self.partner)
+
+    def remove_room_guest(self):
+        self.room.remove_guest()
+        if self.partner != None:
+            self.partner.room.remove_guest()
