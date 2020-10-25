@@ -5,10 +5,11 @@ class Room:
     def __init__(self, rooms, dukebox, room_quality):
         self.dukebox = dukebox
         self.rooms = rooms
-        self.room_quality = room_quality
+        self.quality = room_quality
         self.atmosphere = 0
         self.guests = []
         self.guest_limit = 0
+        self.__set_rooms_quality()
 
         self.set_atmosphere()
 
@@ -35,7 +36,14 @@ class Room:
                 self.guests.remove(guest)
 
     def is_big_enough(self, customer):
-        if customer.partner != None and self.room_quality != RoomType.SINGLE:
+        if customer.partner != None and self.quality != RoomType.SINGLE:
             return True
         else:
             return False
+
+    def __set_rooms_quality(self):
+        if len(self.rooms) > 0:
+            for room in self.rooms:
+                room.quality = self.quality
+                room.set_atmosphere()
+        self.set_atmosphere()

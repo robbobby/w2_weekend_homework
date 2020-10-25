@@ -4,6 +4,7 @@ class Bar:
         self.drinks_list = drinks
         self.staff_list = staff
         self.dukebox = dukebox
+        self.till = 10000
 
     def is_in_menu_list(self, new_drink, menu):
         for drink in menu:
@@ -38,4 +39,14 @@ class Bar:
         for staff in self.staff_list:
             if staff.name == staff_name:
                 return staff
+
+    def add_to_till(self, amount):
+        self.till += amount
+
+    def take_from_till(self, amount):
+        if self.till - amount > 0:
+            self.till -= amount
+            return True
+        else:
+            return False
 

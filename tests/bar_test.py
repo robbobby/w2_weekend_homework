@@ -116,3 +116,18 @@ class TestBar(unittest.TestCase):
     def test_get_staff_member_by_name(self):
         self.assertEqual(self.bar.staff_list[0], self.bar.get_staff_member_by_name(self.bar.staff_list[0].name))
 
+    def test_bar_has_till(self):
+        self.assertEqual(10000, self.bar.till)
+
+    def test_bar_can_add_to_till(self):
+        self.bar.add_to_till(100)
+        self.assertEqual(10100, self.bar.till)
+
+    def test_bar_can_take_off_till(self):
+        self.bar.take_from_till(1000)
+        self.assertEqual(9000, self.bar.till)
+
+    def test_bar_can_take_from__till(self):
+        self.bar.take_from_till(100000)
+        self.assertEqual(10000, self.bar.till)
+

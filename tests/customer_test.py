@@ -36,7 +36,7 @@ class TestCustomer(unittest.TestCase):
 
         self.room = Room([], self.dukebox, RoomType.DELUXE)
 
-        self.bathroom = Bathroom(self.sink, self.bath, self.toilet, self.room.room_quality)
+        self.bathroom = Bathroom(self.sink, self.bath, self.toilet, self.room.quality)
 
 
 

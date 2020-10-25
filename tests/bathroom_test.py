@@ -15,7 +15,7 @@ class TestBathroom(unittest.TestCase):
         self.bathroom = Bathroom(self.sink, self.bath, self.toilet, RoomType.TRIPLE)
 
     def test_bathroom_has_room_quality(self):
-        self.assertEqual(RoomType.TRIPLE, self.bathroom.room_type)
+        self.assertEqual(RoomType.TRIPLE, self.bathroom.quality)
 
     def test_bathroom_has_toilet(self):
         self.assertEqual(type(self.sink), type(self.bathroom.sink))
