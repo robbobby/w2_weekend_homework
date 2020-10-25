@@ -11,4 +11,3 @@ class BathroomUtility:
 
         def set_atmosphere(self):
             self.atmosphere_level = self.hygiene * self.max_atmosphere // 100
-

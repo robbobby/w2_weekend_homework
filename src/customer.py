@@ -4,7 +4,7 @@ class Customer:
         self.age = age
         self.thirst = thirst
         self.hunger = hunger
-        self.wants_alhohol = wants_alcohol
+        self.wants_alcohol = wants_alcohol
         self.fun_level = fun_level
         self.atmosphere = atmosphere
         self.happy = happy
@@ -39,5 +39,37 @@ class Customer:
     def remove_self_from_partner(self):
         self.partner.partner = None
 
+    def remove_room(self):
+        self.room = None
+        self.__remove_partners_room()
+
     def remove_partner(self):
         self.partner = None
+
+    def __set_partners_room(self, room):
+        self.partner.room = room
+
+    def set_room(self, room):
+        self.room = room
+        self.__set_partners_room(room)
+
+    def __remove_partners_room(self):
+        self.partner.room = None
+
+    def has_money(self, amount):
+        if self.wallet >= amount:
+            return True
+        else:
+            return False
+
+    def add_money(self, amount):
+        self.wallet += amount
+
+    def take_money(self, amount):
+        if self.has_money(amount):
+            self.wallet -= amount
+
+    def borrow_money(self, amount):
+        if self.partner != None and self.partner.has_money(amount):
+            self.add_money(amount)
+            self.partner.take_money(amount)

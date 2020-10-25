@@ -8,6 +8,7 @@ class DukeBox:
         self.price = price
         self.playlist = playlist
         self.current_song = Song("Not playing", "No Band", 1, Genre.NONE)
+        self.is_playing = False
 
     def add_song_to_songs(self, new_song):
         self.songs.append(new_song)
@@ -58,3 +59,7 @@ class DukeBox:
 
     def set_current_song(self, song_name):
         self.current_song = self.get_song_with_name(song_name)
+        self.is_playing = True
+
+    def song_finished(self):
+        self.is_playing = False

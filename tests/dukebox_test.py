@@ -59,3 +59,15 @@ class TestDukeBox(unittest.TestCase):
         self.dukebox.set_current_song("Cafo")
         print(self.dukebox.current_song.name)
         self.assertEqual(self.dukebox.songs[0].name, self.dukebox.current_song.name)
+
+    def test_is_duke_box_playing(self):
+        self.assertEqual(False, self.dukebox.is_playing)
+
+    def test_is_duke_box__playing(self):
+        self.dukebox.set_current_song("Cafo")
+        self.assertEqual(True, self.dukebox.is_playing)
+
+    def test_is_duke_box__playing(self):
+        self.dukebox.set_current_song("Cafo")
+        self.dukebox.song_finished()
+        self.assertEqual(False, self.dukebox.is_playing)
